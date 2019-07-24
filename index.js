@@ -22,8 +22,10 @@ postToDiscord = async function(message){
   }
   else
   {
-    headers
     return await request({
+        headers: {
+        'Content-Type': 'application/json'
+        },
         uri: webhookurl,
         method: "POST",
         content: '```xl\n'+message+'\n```'
