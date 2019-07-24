@@ -10,13 +10,16 @@ postToDiscord = async function(message){
   {
     while(message.length>=2000)
     {
-        Hook.info("maincra log",message.substring(0,2000));
+        if (message.substring(0,2000).includes('WARN'))
+            Hook.warn("maincra log",message.substring(0,2000));
+        if (message.substring(0,2000).includes('INFO'))
+            Hook.info("maincra log",message.substring(0,2000));
         message = message.substring(2000);
     }
   }
   else
   {
-      Hook.info("maincra log",message);
+      Hook.err("maincra log",message);
   }
 };
 logp.on('exit', (code, signal) => {
