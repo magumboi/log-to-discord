@@ -10,6 +10,9 @@ postToDiscord = async function(message){
     while(message.length>=2000)
     {
       await request({
+        headers: {
+        'Content-Type': 'application/json'
+        },
         uri: webhookurl,
         method: "POST",
         content: '```xl\n'+message.substring(0,2000)+'\n```'
@@ -19,6 +22,7 @@ postToDiscord = async function(message){
   }
   else
   {
+    headers
     return await request({
         uri: webhookurl,
         method: "POST",
